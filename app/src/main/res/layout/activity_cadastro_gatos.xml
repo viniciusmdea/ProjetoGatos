@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rodolfo.projetogatos.CadastroGatos">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/im_gatoFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/bt_foto"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Adicione foto"
+            />
+        <RelativeLayout
+            android:id="@+id/rl_imagemsFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_fotoTiradas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <EditText
+            android:id="@+id/et_Descricao"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:minLines="5"/>
+
+        <Button
+            android:id="@+id/bt_CadastroGato"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Cadastro"
+            android:onClick="cadastro"
+            />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
