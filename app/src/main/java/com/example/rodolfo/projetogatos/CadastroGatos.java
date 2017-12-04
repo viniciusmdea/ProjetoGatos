@@ -94,6 +94,7 @@ public class CadastroGatos extends AppCompatActivity {
         String caracteristica = et_Descricao.getText().toString();
 
         gato = new Gato(nome,fotos,caracteristica,latLng);
+        ListaGatos.getInstance().addGato(gato);
         gato.salvaFirebase();
         Toast.makeText(this,"Gato Cadastrado",Toast.LENGTH_SHORT).show();
         finish();

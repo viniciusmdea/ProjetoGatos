@@ -34,8 +34,14 @@ public class TelaGatos extends AppCompatActivity {
         tv_gatoNome = (TextView) findViewById(R.id.tv_nomeGato);
 
         Intent intent = getIntent();
-        gato = (Gato) intent.getExtras().getSerializable("GatoIntent");
-
+        if (intent.hasExtra("GatoIntent")) {
+            gato = (Gato) intent.getExtras().getSerializable("GatoIntent");
+            Log.i(TAG,"Ok intent");
+        }
+        else{
+            Log.e(TAG,"Error extras");
+            gato = null;
+        }
         if (gato != null) {
             Log.i(TAG,"gat intent ok");
             if (gato.getNome() != null) {
@@ -52,7 +58,12 @@ public class TelaGatos extends AppCompatActivity {
 
             if (gato.getFotos() != null) {
                 iv_Gato.setImageBitmap(gato.getFotos().get(0));
+                Log.i(TAG,"Add Fotos");
             }
+            else{
+                Log.e(TAG,"Error fotos");
+            }
+
         }
         else{
             Log.e(TAG,"gato intent Error");

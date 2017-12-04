@@ -78,7 +78,8 @@ public class MapFragment extends FragmentActivity implements OnMapReadyCallback 
                 Intent intent;
                 intent = new Intent(ctx, TelaGatos.class);
                 Gato gato = mapMaker.get(marker);
-                intent.putExtra("GatoIntent",(Serializable) mapMaker.get(this));
+                intent.putExtra("GatoIntent",(Serializable) gato);
+                Log.i("intent Gato","nome e:"+gato.getNome());
                 ctx.startActivity(intent);
                 return false;
             }

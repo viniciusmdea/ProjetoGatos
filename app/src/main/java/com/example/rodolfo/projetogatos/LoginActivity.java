@@ -49,7 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private final static String TAG = "Tela Login";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

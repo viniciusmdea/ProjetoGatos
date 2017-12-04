@@ -21,7 +21,7 @@ public class Gato implements Serializable{
     private String nome;
     private ArrayList<Bitmap> fotos;
     private String caracteristicas;
-    private LatLng possicao;
+    private transient LatLng possicao;
     private String telefone;
     private static final String TAG = "Classe Gato";
 
