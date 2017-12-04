@@ -1,3 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ProjetoGatos</string>
+    <string name="app_name">GatPal</string>
+    <string name="email">email</string>
+    <string name="senha">senha</string>
+    <string name="cofirmarSenha">Cofirmar senha</string>
+    <string name="login">login</string>
+    <string name="entrar">entrar</string>
+    <string name="nome">Nome</string>
+    <string name="editar">Editar</string>
+    <string name="cadastrar">cadastre-se</string>
+    <string name="addFoto">adicione fotos</string>
+    <string name="descricao">Descrição</string>
+    <string name="cadastrarGato">cadastrar</string>
+    <string name="btperfil">Meu perfil</string>
+    <string name="btaddAddGato">Adicione gatos</string>
+    <string name="btDisponibilizar">Disponibilizar para adoção</string>
+    <string name="caracteristicas">Caracteristicas</string>
+    <string name="ligar">Ligar</string>
+
 </resources>

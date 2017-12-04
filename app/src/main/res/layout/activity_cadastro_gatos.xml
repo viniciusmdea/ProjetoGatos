@@ -14,35 +14,36 @@
 
         <ImageView
             android:id="@+id/im_gatoFoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
 
         <Button
             android:id="@+id/bt_foto"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Adicione foto"
-            />
-        <RelativeLayout
-            android:id="@+id/rl_imagemsFoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/iv_fotoTiradas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
+            android:text="@string/addFoto"
+            android:onClick="tirarfoto" />
+
+        <EditText
+            android:id="@+id/et_Nome"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:hint="@string/nome"
+            android:gravity="center"/>
         <EditText
             android:id="@+id/et_Descricao"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:hint="@string/descricao"
+            android:gravity="center_horizontal"
             android:minLines="5"/>
 
         <Button
             android:id="@+id/bt_CadastroGato"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Cadastro"
+            android:text="@string/cadastrarGato"
             android:onClick="cadastro"
             />
 

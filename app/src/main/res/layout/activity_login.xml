@@ -13,35 +13,38 @@
         tools:layout_editor_absoluteX="8dp">
 
         <EditText
+            android:drawableLeft="@drawable/email"
             android:id="@+id/editLogin"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="login"
+            android:hint="@string/login"
             android:layout_centerHorizontal="true"/>
 
         <EditText
+            android:drawableLeft="@drawable/password"
             android:id="@+id/editSenha"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="senha"
+            android:hint="@string/senha"
             android:inputType="textPassword"
             android:layout_below="@id/editLogin"
             android:layout_centerHorizontal="true"/>
 
         <Button
             android:id="@+id/buttonEntrar"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Entrar"
+            android:text="@string/entrar"
             android:layout_below="@id/editSenha"
             android:layout_centerHorizontal="true"
             android:onClick="entrarClick"/>
 
         <Button
             android:id="@+id/buttonCadastre"
-            android:layout_width="150dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Cadastre-se"
+            android:text="@string/cadastrar"
+            android:textAlignment="center"
             android:gravity="bottom"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

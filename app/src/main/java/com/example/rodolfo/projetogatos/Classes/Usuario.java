@@ -9,14 +9,13 @@ import java.util.ArrayList;
  * Created by vinic on 02/11/2017.
  */
 
-public class Usuario implements Serializable {
+public class Usuario {
 
     private int foto;
     private String email;
     private int telefone;
     private String nomeCompleto;
     private ArrayList<Gato> gatos;
-    private LatLng local;
     private String senha;
 
     public Usuario(int foto, String email, int telefone, String nomeCompleto, String senha) {
@@ -28,24 +27,17 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public Usuario(String email, String senha) {
+    public Usuario(String nomeCompleto, String email, String senha) {
+        this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.senha = senha;
     }
 
-    public Usuario(String email, String senha,ArrayList<Gato> gatos) {
+    public Usuario(String nomeCompleto, String email, String senha,ArrayList<Gato> gatos) {
+        this.nomeCompleto = nomeCompleto;
         this.email = email;
         this.senha = senha;
         this.gatos = gatos;
-    }
-
-
-    public LatLng getLocal() {
-        return local;
-    }
-
-    public void setLocal(LatLng local) {
-        this.local = local;
     }
 
     public String getSenha() {

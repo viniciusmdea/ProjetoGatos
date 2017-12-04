@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GatPal</string>
+    <string name="email">Email</string>
+    <string name="senha">Password</string>
+    <string name="cofirmarSenha">confirm password</string>
+    <string name="login">Login</string>
+    <string name="entrar">Enter</string>
+    <string name="nome">Name</string>
+    <string name="editar">Edit</string>
+    <string name="cadastrar">Register</string>
+    <string name="addFoto">Add photos</string>
+    <string name="descricao">Description</string>
+    <string name="cadastrarGato">Register</string>
+    <string name="btperfil">My perfil</string>
+    <string name="btaddAddGato">Add cat</string>
+    <string name="btDisponibilizar">Put to adoption</string>
+    <string name="caracteristicas">Description</string>
+    <string name="ligar">Call</string>
+</resources>

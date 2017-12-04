@@ -22,21 +22,24 @@
                 android:src="@drawable/gatinho"/>
         </RelativeLayout>
         <TextView
+            android:id="@+id/tv_nomeGato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:text="Caracteristicas"/>
+            android:text="@string/nome"/>
 
         <TextView
             android:id="@+id/tv_CaracteristicasGato"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/caracteristicas"
             android:minLines="5"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ligar"
+            android:text="@string/ligar"
             android:onClick="ligar"/>
 
     </LinearLayout>

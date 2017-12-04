@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1020562704446",
+    "firebase_url": "https://projetogatos-d57d3.firebaseio.com",
+    "project_id": "projetogatos-d57d3",
+    "storage_bucket": "projetogatos-d57d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020562704446:android:0bb7589af4976ab3",
+        "android_client_info": {
+          "package_name": "com.example.rodolfo.projetogatos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020562704446-6ej9foqofqig5dc93lmmsf6cgj19t3gt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rodolfo.projetogatos",
+            "certificate_hash": "e204826298af521810217677a7ab5e832c13695c"
+          }
+        },
+        {
+          "client_id": "1020562704446-a3td86sgb3hk0qso4kgf499evunnl6dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqyL9fwTDr7cfwbBoj54VkLoWG-zkp0pI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020562704446-a3td86sgb3hk0qso4kgf499evunnl6dh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
