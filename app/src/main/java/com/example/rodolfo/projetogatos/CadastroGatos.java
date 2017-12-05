@@ -48,6 +48,7 @@ public class CadastroGatos extends AppCompatActivity {
     private ArrayList<Bitmap> fotos;
 
     private LatLng latLng;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,8 @@ public class CadastroGatos extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            storageReference = FirebaseStorage.getInstance().getReference().child("fotos");
+//            Uri uri = imageBitmap.t
             im_gatoFoto.setImageBitmap(imageBitmap);
             fotos.add(imageBitmap);
         }

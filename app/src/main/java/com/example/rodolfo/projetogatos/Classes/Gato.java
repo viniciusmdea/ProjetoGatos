@@ -1,12 +1,19 @@
 package com.example.rodolfo.projetogatos.Classes;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.util.Base64;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
@@ -19,7 +26,7 @@ import java.util.ArrayList;
 public class Gato implements Serializable{
     private int id;
     private String nome;
-    private ArrayList<Bitmap> fotos;
+    private transient ArrayList<Bitmap> fotos;
     private String caracteristicas;
     private transient LatLng possicao;
     private String telefone;
@@ -48,13 +55,16 @@ public class Gato implements Serializable{
         DatabaseReference  listaGatos = mDatabase.push();
         String gatoKey = listaGatos .getKey();
 
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference fotosReference = storageReference.child("fotos").child(gatoKey);
+
         listaGatos.child("nome").setValue(nome);
         listaGatos.child("caracteristicas").setValue(caracteristicas);
         listaGatos.child("possicao").setValue(String.valueOf(possicao.latitude)+','+String.valueOf(possicao.longitude));
         listaGatos.child("telefone").setValue(telefone);
         Log.i(TAG,"Gato cadastrado "+"tamanho fotos:"+fotos.size());
         if (fotos.size() > 0){
-            salvarImage(listaGatos);
+            salvarImage(fotosReference,listaGatos);
         }
         //mDatabase.child("gato").child(nome).child("imagem").setValue(possicao.toString());
     }
@@ -101,16 +111,30 @@ public class Gato implements Serializable{
     }
 
 
-    public void salvarImage(DatabaseReference ref){
+    public void salvarImage(StorageReference ref,DatabaseReference refData){
         Log.i(TAG,"Iniciando salvar Imagem");
-        int cont = 0;
-        for (Bitmap bitmap : fotos){
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
-            ref.child("imagens").child(String.valueOf(cont)).setValue(imageEncoded);
-            Log.i(TAG,"Imagem "+cont+" cadastrada");
+        refData.child("imagens").setValue(String.valueOf(this.getFotos().size()));
+
+        int cont =0;
+        for (Bitmap bitmap : fotos) {
+            StorageReference FotoReferencia = ref.child("Foto-"+cont);
             cont++;
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            byte[] data = baos.toByteArray();
+            UploadTask uploadTask = FotoReferencia.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("Imagem Upload","Error");
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                    Log.i("Imagem Upload","Ok");
+                }
+            });
         }
     }
 }
