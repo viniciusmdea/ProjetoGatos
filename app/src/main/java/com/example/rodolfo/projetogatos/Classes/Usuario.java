@@ -13,12 +13,12 @@ public class Usuario {
 
     private int foto;
     private String email;
-    private int telefone;
+    private String telefone;
     private String nomeCompleto;
     private ArrayList<Gato> gatos;
     private String senha;
 
-    public Usuario(int foto, String email, int telefone, String nomeCompleto, String senha) {
+    public Usuario(int foto, String email, String telefone, String nomeCompleto, String senha) {
         this.foto = foto;
         this.email = email;
         this.telefone = telefone;
@@ -64,11 +64,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

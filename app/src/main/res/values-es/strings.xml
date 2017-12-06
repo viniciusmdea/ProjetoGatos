@@ -14,7 +14,10 @@
     <string name="cadastrarGato">Registar</string>
     <string name="btperfil">Mi perfil</string>
     <string name="btaddAddGato">Añadir gatos</string>
+    <string name="btadotarAddGato">Adoptar gatos</string>
     <string name="btDisponibilizar">Poner para la adopción</string>
     <string name="caracteristicas">Descripción</string>
     <string name="ligar">Llamar</string>
+    <string name="senhaNaoConfere">Contraseñas deben ser iguales</string>
+    <string name="telefone">Teléfono</string>
 </resources>

@@ -26,34 +26,44 @@ import java.util.ArrayList;
 public class Gato implements Serializable{
     private int id;
     private String nome;
-    private transient ArrayList<Bitmap> fotos;
+    //private transient ArrayList<Bitmap> fotos;
     private String caracteristicas;
     private transient LatLng possicao;
+    private String key;
+
     private String telefone;
     private static final String TAG = "Classe Gato";
 
+    public Gato(String key, String nome, String caracteristicas, LatLng possicao, String telefone) {
+        this.nome = nome;
+        this.key = key;
+        this.caracteristicas = caracteristicas;
+        this.possicao = possicao;
+        this.telefone = telefone;
+    }
 
     public Gato(String nome, ArrayList<Bitmap> fotos, String caracteristicas, LatLng possicao) {
         this.nome = nome;
-        this.fotos = fotos;
+        //this.fotos = fotos;
         this.caracteristicas = caracteristicas;
         this.possicao = possicao;
     }
 
     public Gato(String nome, ArrayList<Bitmap> fotos, String caracteristicas, LatLng possicao, String telefone) {
         this.nome = nome;
-        this.fotos = fotos;
+        //this.fotos = fotos;
         this.caracteristicas = caracteristicas;
         this.possicao = possicao;
         this.telefone = telefone;
     }
 
 
-    public void salvaFirebase(){
+    public void salvaFirebase(ArrayList<Bitmap> fotos){
         DatabaseReference mDatabase;
         mDatabase = FirebaseDatabase.getInstance().getReference().child("gatos");
         DatabaseReference  listaGatos = mDatabase.push();
         String gatoKey = listaGatos .getKey();
+        this.key = gatoKey;
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference fotosReference = storageReference.child("fotos").child(gatoKey);
@@ -64,18 +74,17 @@ public class Gato implements Serializable{
         listaGatos.child("telefone").setValue(telefone);
         Log.i(TAG,"Gato cadastrado "+"tamanho fotos:"+fotos.size());
         if (fotos.size() > 0){
-            salvarImage(fotosReference,listaGatos);
+            salvarImage(fotosReference,listaGatos,fotos);
         }
-        //mDatabase.child("gato").child(nome).child("imagem").setValue(possicao.toString());
     }
-
+/*
     public ArrayList<Bitmap> getFotos() {
         return fotos;
     }
 
     public void setFotos(ArrayList<Bitmap> fotos) {
         this.fotos = fotos;
-    }
+    }*/
 
     public String getCaracteristicas() {
         return caracteristicas;
@@ -110,10 +119,17 @@ public class Gato implements Serializable{
         this.telefone = telefone;
     }
 
+    public String getKey() {
+        return key;
+    }
 
-    public void salvarImage(StorageReference ref,DatabaseReference refData){
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void salvarImage(StorageReference ref, DatabaseReference refData, ArrayList<Bitmap> fotos){
         Log.i(TAG,"Iniciando salvar Imagem");
-        refData.child("imagens").setValue(String.valueOf(this.getFotos().size()));
+        refData.child("imagens").setValue(String.valueOf(fotos.size()));
 
         int cont =0;
         for (Bitmap bitmap : fotos) {
@@ -135,6 +151,6 @@ public class Gato implements Serializable{
                     Log.i("Imagem Upload","Ok");
                 }
             });
-        }
+         }
     }
 }

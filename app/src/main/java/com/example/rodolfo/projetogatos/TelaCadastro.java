@@ -1,6 +1,8 @@
 package com.example.rodolfo.projetogatos;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.StorageReference;
+
+import java.io.File;
 
 public class TelaCadastro extends AppCompatActivity {
 
@@ -36,9 +41,21 @@ public class TelaCadastro extends AppCompatActivity {
 
     }
 
+
+
+    @SuppressLint("ResourceAsColor")
     public void cadastrar(View view) {
         String email = ed_emailUser.getText().toString();
         String password = ed_senhaUser.getText().toString();
+        String senha = ed_senhaUser.getText().toString();
+        String senhaConfirm = ed_ConfirmSenha.getText().toString();
+
+        if(!senha.equals(senhaConfirm)){
+            Log.e(TAG,"Senhas não conferem: "+senha+" != "+senhaConfirm);
+            ed_ConfirmSenha.setBackgroundColor(R.color.red);
+            Toast.makeText(this,R.string.senhaNaoConfere,Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.createUserWithEmailAndPassword(email, password)

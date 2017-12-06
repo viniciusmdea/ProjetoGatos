@@ -44,13 +44,11 @@ public class MenuInicial extends AppCompatActivity {
     ArrayList<Gato> gatos;
     private static String TAG = "Menu Inicial";
     private static ListaGatos listaGatos = ListaGatos.getInstance();
-    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_inicial);
-        storageReference = FirebaseStorage.getInstance().getReference().child("fotos");
 
         listaGatosDB();
 
@@ -116,12 +114,8 @@ public class MenuInicial extends AppCompatActivity {
                         Log.e(TAG, PossLit.toString());
                         latLngGato = new LatLng(Double.valueOf(PossLit[0]), Double.valueOf(PossLit[1]));
                     }
-
-                    if (child.getKey().equals("imagens")) {
-                        addGato(child,keyGato,gatoid);
-                    }
                     Log.e(TAG, "Testes:" + nomeGato + ":" + caractGato + ":" + str_possGato + ":" + teleGato);
-                    Gato gatoNovo = new Gato(nomeGato, listaImagens, caractGato, latLngGato, teleGato);
+                    Gato gatoNovo = new Gato(keyGato,nomeGato, caractGato, latLngGato, teleGato);
 
                     listaGatos.addGato(gatoNovo);
                     gatoid++;
@@ -170,7 +164,7 @@ public class MenuInicial extends AppCompatActivity {
         mDatabaseRef.addChildEventListener(childEventListener);
     }
 
-    public void addGato(DataSnapshot child, String keyGato, final int gatoid){
+    /*public void addGato(DataSnapshot child, String keyGato, final int gatoid){
         for (int i = 0; i < Integer.valueOf(child.getValue().toString()); i++) {
             StorageReference refFoto = storageReference.child(keyGato).child("Foto-" + i);
             Log.i(TAG, refFoto.toString());
@@ -199,6 +193,6 @@ public class MenuInicial extends AppCompatActivity {
                                          }
                     );
         }
-    }
+    }*/
 
 }

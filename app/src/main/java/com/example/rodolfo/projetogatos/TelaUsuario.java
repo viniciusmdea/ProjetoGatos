@@ -18,11 +18,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class TelaUsuario extends AppCompatActivity {
 
-    private Usuario user;
+    private Usuario userSt;
 
     private EditText ed_nome;
     private EditText ed_email;
@@ -35,14 +36,14 @@ public class TelaUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_tela_usuario);
 
         Intent intentRecebido = getIntent();
-        user = UsuarioSt.getInstance().getUsuario();
+        userSt = UsuarioSt.getInstance().getUsuario();
 
         ed_nome = (EditText) findViewById(R.id.tv_nome);
         ed_email = (EditText) findViewById(R.id.tv_email);
         im_foto = (ImageView) findViewById(R.id.im_fotoUsua);
 
-        ed_nome.setText(user.getNomeCompleto());
-        ed_email.setText(user.getEmail());
+        ed_nome.setText(userSt.getNomeCompleto());
+        ed_email.setText(userSt.getEmail());
 
         //ed_nome.setKeyListener(null);
         //ed_email.setKeyListener(null);
@@ -57,12 +58,12 @@ public class TelaUsuario extends AppCompatActivity {
             String name = user.getDisplayName();
             if (name != null){
                 ed_nome.setText(name);
-
             }
             String email = user.getEmail();
             if (email != null){
                 ed_email.setText(email);
             }
+
             //Uri photoUrl = user.getPhotoUrl();
 
             boolean emailVerified = user.isEmailVerified();
@@ -115,6 +116,7 @@ public class TelaUsuario extends AppCompatActivity {
                         }
                     });
         }
+
         finish();
     }
 }

@@ -37,12 +37,6 @@
             android:textStyle="bold"
             android:textSize="15dp" />
 
-        <EditText
-            android:id="@+id/tv_telefoneUser"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:inputType="phone"/>
-
         <Button
             android:layout_margin="5dp"
             android:layout_width="wrap_content"

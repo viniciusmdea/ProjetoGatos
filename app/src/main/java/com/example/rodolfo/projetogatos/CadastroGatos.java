@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.rodolfo.projetogatos.Classes.Gato;
 import com.example.rodolfo.projetogatos.Classes.ListaGatos;
+import com.example.rodolfo.projetogatos.Classes.Usuario;
+import com.example.rodolfo.projetogatos.Classes.UsuarioSt;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
@@ -43,7 +45,7 @@ public class CadastroGatos extends AppCompatActivity {
 
     private FusedLocationProviderClient mFusedLocationClient;
     private Gato gato;
-    private EditText et_Descricao, et_Nome;
+    private EditText et_Descricao, et_Nome,et_telefone;
     private ImageView im_gatoFoto;
     private ArrayList<Bitmap> fotos;
 
@@ -56,9 +58,9 @@ public class CadastroGatos extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_gatos);
         et_Nome = (EditText) findViewById(R.id.et_Nome);
         et_Descricao = (EditText) findViewById(R.id.et_Descricao);
+        et_telefone = (EditText) findViewById(R.id.et_telefone);
         im_gatoFoto = (ImageView) findViewById(R.id.im_gatoFoto);
         im_gatoFoto.setImageResource(R.drawable.gatinho);
-        et_Descricao.setText("Gatinho");
         fotos = new ArrayList<Bitmap>();
         getLatLng();
     }
@@ -95,10 +97,11 @@ public class CadastroGatos extends AppCompatActivity {
     public void cadastro(View view) {
         String nome = et_Nome.getText().toString();
         String caracteristica = et_Descricao.getText().toString();
+        String telefone =  et_telefone.getText().toString();
 
-        gato = new Gato(nome,fotos,caracteristica,latLng);
+        gato = new Gato(nome,fotos,caracteristica,latLng,telefone);
         ListaGatos.getInstance().addGato(gato);
-        gato.salvaFirebase();
+        gato.salvaFirebase(fotos);
         Toast.makeText(this,"Gato Cadastrado",Toast.LENGTH_SHORT).show();
         finish();
     }
