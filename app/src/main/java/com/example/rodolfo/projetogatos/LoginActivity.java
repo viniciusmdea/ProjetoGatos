@@ -60,14 +60,13 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        //Teste
         ArrayList<Bitmap> fotos = new ArrayList<Bitmap>();
         ArrayList<Gato> gatos = new ArrayList<Gato>();
         Bitmap imagem = BitmapFactory.decodeResource(this.getResources(), R.drawable.gatinho);
         fotos.add(imagem);
         fotos.add(BitmapFactory.decodeResource(this.getResources(), R.drawable.perfil));
-        listaGatos.addGato(new Gato("Bichano",fotos,"E um gato ai",new LatLng(-23.547428, -46.719366)));
-        listaGatos.addGato(new Gato("Bichinho",fotos,"Mais um gato",new LatLng(-23.589454, -46.661284)));
+        //listaGatos.addGato(new Gato("Bichano",fotos,"E um gato ai",new LatLng(-23.547428, -46.719366)));
+        //listaGatos.addGato(new Gato("Bichinho",fotos,"Mais um gato",new LatLng(-23.589454, -46.661284)));
 
         usuario = new Usuario("joao Silva","login","123456",gatos);
         UsuarioSt usuarioSt = UsuarioSt.getInstance();

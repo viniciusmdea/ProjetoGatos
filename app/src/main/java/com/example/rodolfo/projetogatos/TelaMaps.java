@@ -66,8 +66,6 @@ public class TelaMaps extends AppCompatActivity {
 
         mapFragment.getMapAsync(new MapFragment(ctx,locationManager));
 
-        //Testando Gatos
-
     }
 
 

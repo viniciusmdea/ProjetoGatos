@@ -45,8 +45,6 @@ public class TelaUsuario extends AppCompatActivity {
         ed_nome.setText(userSt.getNomeCompleto());
         ed_email.setText(userSt.getEmail());
 
-        //ed_nome.setKeyListener(null);
-        //ed_email.setKeyListener(null);
         getUser();
     }
 
@@ -64,19 +62,19 @@ public class TelaUsuario extends AppCompatActivity {
                 ed_email.setText(email);
             }
 
-            //Uri photoUrl = user.getPhotoUrl();
-
             boolean emailVerified = user.isEmailVerified();
-
 
             String uid = user.getUid();
             Log.e("Tela User",texto);
         }
     }
 
+    //Função do botão do editar
+    //Atualiza os dados do usuario no firebase
     public void editar(View view){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        //Pega o nome do edit text e atualiza no firebase
         String nomeEdit = ed_nome.getText().toString();
         if (nomeEdit != null && !nomeEdit.isEmpty()) {
             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
@@ -94,6 +92,8 @@ public class TelaUsuario extends AppCompatActivity {
                         }
                     });
         }
+
+        //Pega o email do edittext e atualiza no firebase
         String email = ed_email.getText().toString();
         if (email != null && !email.isEmpty())
         user.updateEmail(email)
@@ -106,6 +106,7 @@ public class TelaUsuario extends AppCompatActivity {
                     }
                 });
 
+        //Pega a senha do edittext a atualiza no firebase
         String senha = null;//ed
         if (senha != null && !senha.isEmpty()) {
             user.updatePassword(senha).

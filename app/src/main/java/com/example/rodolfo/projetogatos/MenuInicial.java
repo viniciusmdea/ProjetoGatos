@@ -83,6 +83,7 @@ public class MenuInicial extends AppCompatActivity {
     }
 
 
+    //Pega os gatos do banco de dados
     private void listaGatosDB() {
         DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("gatos");
         ChildEventListener childEventListener = new ChildEventListener() {
@@ -120,11 +121,6 @@ public class MenuInicial extends AppCompatActivity {
                     listaGatos.addGato(gatoNovo);
                     gatoid++;
                 }
-
-
-                //Log.i(TAG,dataSnapshot.getValue().toString());
-                ;
-                // ...
             }
 
             @Override
@@ -164,35 +160,6 @@ public class MenuInicial extends AppCompatActivity {
         mDatabaseRef.addChildEventListener(childEventListener);
     }
 
-    /*public void addGato(DataSnapshot child, String keyGato, final int gatoid){
-        for (int i = 0; i < Integer.valueOf(child.getValue().toString()); i++) {
-            StorageReference refFoto = storageReference.child(keyGato).child("Foto-" + i);
-            Log.i(TAG, refFoto.toString());
-            refFoto.getDownloadUrl().
-                    addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                             @Override
-                                             public void onSuccess(Uri uri) {
-                                                 final String urlString = uri.toString();
-                                                 new Thread(new Runnable() {
-                                                     public void run() {
-                                                         try {
-                                                             URL url = new URL(urlString.toString());
-                                                             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                                                             Bitmap bitmap = BitmapFactory.decodeStream(urlConnection.getInputStream());
-                                                             ListaGatos.getInstance().getGatos().get(gatoid).getFotos().add(bitmap);
-                                                             Log.i(TAG, "Carregou Foto com sucesso, tamanho:"+String.valueOf(ListaGatos.getInstance().getGatos().get(gatoid).getFotos().size()));
-                                                         } catch (IOException e) {
-                                                             Log.e(TAG, "Error ao carregar Foto: " + e.toString());
-                                                             e.printStackTrace();
-                                                         }
-                                                     }
-                                                 }).start();
 
-
-                                             }
-                                         }
-                    );
-        }
-    }*/
 
 }
